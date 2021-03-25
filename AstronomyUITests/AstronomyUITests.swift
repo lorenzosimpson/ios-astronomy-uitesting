@@ -51,6 +51,24 @@ class AstronomyUITests: XCTestCase {
         
         app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
     }
+    
+    func testGoToNextSol() {
+        app.launch()
+        
+        let nextButton = app.buttons["PhotosCollectionViewController.NextSolButton"]
+        nextButton.tap()
+        
+        XCTAssertTrue(app.staticTexts["Sol 16"].exists)
+    }
+    
+    func testGoToPreviousSol() {
+        app.launch()
+        
+        let prevButton = app.buttons["PhotosCollectionViewController.PreviousSolButton"]
+        prevButton.tap()
+        
+        XCTAssertTrue(app.staticTexts["Sol 14"].exists)
+    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
