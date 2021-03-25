@@ -61,6 +61,7 @@ class AstronomyUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Sol 16"].exists)
     }
     
+    
     func testGoToPreviousSol() {
         app.launch()
         
@@ -68,6 +69,13 @@ class AstronomyUITests: XCTestCase {
         prevButton.tap()
         
         XCTAssertTrue(app.staticTexts["Sol 14"].exists)
+    }
+    
+    func testCollectionViewHasCells() {
+        app.launch()
+        
+        let collectionView = app.collectionViews.firstMatch
+        XCTAssertTrue(collectionView.cells.count > 0)
     }
 
     func testLaunchPerformance() throws {
